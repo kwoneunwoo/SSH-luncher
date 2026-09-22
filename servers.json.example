@@ -1,0 +1,16 @@
+{
+    "servers": [
+        {
+            "name": "Eunwoo's server",
+            "ssh_path": "~/.ssh/id_rsa",
+            "address": "eunwoo@1.1.1.1",
+            "port": 22
+        },
+        {
+            "name": "Develop server",
+            "ssh_path": "~/.ssh/id_rsa",
+            "address": "admin@2.2.2.2",
+            "port": 3000
+        }
+    ]
+}
