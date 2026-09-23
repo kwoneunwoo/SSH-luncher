@@ -112,7 +112,7 @@ func main() {
 				continue
 			}
 
-			choiceIndex := choice - 1
+			choiceIndex = choice - 1
 			if choiceIndex < 0 || choiceIndex >= len(servers) {
 				continue
 			}
