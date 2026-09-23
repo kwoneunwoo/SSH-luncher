@@ -155,6 +155,6 @@ func main() {
 	err := cmd.Run()
 	if err != nil {
 		fmt.Printf("[Error] An error occurred while closing the SSH connection: %v", err)
+		pause()
 	}
-	pause()
 }
