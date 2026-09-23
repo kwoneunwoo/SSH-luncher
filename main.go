@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"path/filepath"
 )
 
 
@@ -70,6 +71,21 @@ func loadServers(filename string) []Server {
 }
 
 func main() {
+	// Set working directory
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		fmt.Println("현재 파일 경로를 가져오지 못했습니다.")
+		pause()
+		return
+	}
+
+	currentDir := filepath.Dir(filename)
+	if err := os.Chdir(currentDir); err != nil {
+		fmt.Println(err)
+		pause()
+		return
+	}
+	
 	servers := loadServers("servers.json")
 
 	var target Server
