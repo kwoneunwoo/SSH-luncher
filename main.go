@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"bufio"
 	"os/exec"
 	"runtime"
 	"strconv"
@@ -117,15 +118,17 @@ func main() {
 			fmt.Printf("Choose server number (1-%d): ", len(servers))
 
 			// 사용자가 입력 후 숫자로 변환하여 저장.
-			var inputStr string
-			_, err := fmt.Scanln(&inputStr)
-			if err != nil {
-				continue
-			}
+			reader := bufio.NewReader(os.Stdin)
+			inputStr, _ := reader.ReadString('\n')
+			inputStr = strings.TrimSpace(inputStr)
 
-			choice, err := strconv.Atoi(strings.TrimSpace(inputStr))
-			if err != nil {
-				continue
+			choice := 1
+			if inputStr != "" {
+				var err error
+				choice, err = strconv.Atoi(inputStr)
+				if err != nil {
+					continue
+				}
 			}
 
 			choiceIndex = choice - 1
